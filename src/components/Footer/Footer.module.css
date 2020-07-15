@@ -1,0 +1,28 @@
+.footer {
+    display: flex;
+    justify-self: flex-end;
+    align-items: center;
+    color: #111111;
+}
+
+.copyright {
+    margin-right: auto;
+}
+
+.dayMode {
+    width: 14px;
+    height: 14px;
+    background-image: url("../../img/moon.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-right: 22px;
+}
+
+.languageChange {
+    color: #111111;
+    transition: .5s;
+}
+
+.languageChange:hover {
+    color: #3D7FFF;
+}
