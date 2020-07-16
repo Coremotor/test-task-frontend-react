@@ -1,6 +1,5 @@
 .footer {
     display: flex;
-    justify-self: flex-end;
     align-items: center;
     color: #111111;
 }

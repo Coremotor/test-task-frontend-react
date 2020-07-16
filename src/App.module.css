@@ -1,10 +1,23 @@
+/*.container {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    min-height: 100vh;*/
+/*    box-sizing: border-box;*/
+/*    !*font-family: Golos, sans-serif;*!*/
+/*    background-color: #F0F3FA;*/
+/*    padding: 140px 40px 40px;*/
+/*    overflow: hidden;*/
+/*}*/
+
+
 .container {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+    display: grid;
+    grid-template-rows: 1fr;
+    /*height: 100vh;*/
     box-sizing: border-box;
     /*font-family: Golos, sans-serif;*/
     background-color: #F0F3FA;
     padding: 140px 40px 40px;
     overflow: hidden;
 }
+
