@@ -25,17 +25,30 @@ export default function Form({inputHandler, state}) {
                        name="inn"
                        onFocus={(event) => inputHandler(event, "Введите 10 или 12 цифр")}
                        onBlur={(event) => inputHandler(event, "ИНН организации или ИП")}
-                       placeholder={state[0].inputPlaceholderValue}
+                       placeholder={state.find((item) => item.inputId === "innInputField").inputPlaceholderValue}
                        required
-                       value={state[0].inputValue}
+                       value={state.find((item) => item.inputId === "innInputField").inputValue}
                        onChange={inputHandler}
                 />
 
-                <span className={styles["input-verification-result-block"]}>12</span>
                 <span className={styles["input-verification-result-block"]}>
-                    <img className={styles["icon-done"]} src={doneIcon} alt="Done"/>
+                    {state.find((item) => item.inputId === "innInputField").inputValue.length === 0
+                        ? null :
+                        state.find((item) => item.inputId === "innInputField").inputValue.length === 10
+                            ? null :
+                            state.find((item) => item.inputId === "innInputField").inputValue.length === 12
+                                ? null :
+                                state.find((item) => item.inputId === "innInputField").inputValue.length}
                 </span>
 
+                {
+                    state.find((item) => item.inputId === "innInputField").inputVerificationResult
+                        ?
+                        <span className={styles["input-verification-result-block"]}>
+                            <img className={styles["icon-done"]} src={doneIcon} alt="Done"/>
+                        </span>
+                        : null
+                }
             </div>
 
             <div className={styles["input-wrapper"]}>
@@ -46,15 +59,20 @@ export default function Form({inputHandler, state}) {
                        name="site"
                        onFocus={(event) => inputHandler(event, "www.example.com")}
                        onBlur={(event) => inputHandler(event, "Сайт магазина")}
-                       placeholder={state[1].inputPlaceholderValue}
+                       placeholder={state.find((item) => item.inputId === "urlInputField").inputPlaceholderValue}
                        required
-                       value={state[1].inputValue}
+                       value={state.find((item) => item.inputId === "urlInputField").inputValue}
                        onChange={inputHandler}
                 />
 
-                <span className={styles["input-verification-result-block"]}>
-                    <img className={styles["icon-done"]} src={doneIcon} alt="Done"/>
-                </span>
+                {
+                    state.find((item) => item.inputId === "urlInputField").inputVerificationResult
+                        ?
+                        <span className={styles["input-verification-result-block"]}>
+                            <img className={styles["icon-done"]} src={doneIcon} alt="Done"/>
+                        </span>
+                        : null
+                }
             </div>
 
             <div className={styles["input-wrapper"]}>
@@ -65,15 +83,20 @@ export default function Form({inputHandler, state}) {
                        name="email"
                        onFocus={(event) => inputHandler(event, "example@mail.com")}
                        onBlur={(event) => inputHandler(event, "Электронная почта")}
-                       placeholder={state[2].inputPlaceholderValue}
+                       placeholder={state.find((item) => item.inputId === "emailInputField").inputPlaceholderValue}
                        required
-                       value={state[2].inputValue}
+                       value={state.find((item) => item.inputId === "emailInputField").inputValue}
                        onChange={inputHandler}
                 />
 
-                <span className={styles["input-verification-result-block"]}>
-                    <img className={styles["icon-done"]} src={doneIcon} alt="Done"/>
-                </span>
+                {
+                    state.find((item) => item.inputId === "emailInputField").inputVerificationResult
+                        ?
+                        <span className={styles["input-verification-result-block"]}>
+                            <img className={styles["icon-done"]} src={doneIcon} alt="Done"/>
+                        </span>
+                        : null
+                }
             </div>
 
             <div className={styles["input-wrapper"]}>
@@ -84,19 +107,32 @@ export default function Form({inputHandler, state}) {
                        name="tel"
                        onFocus={(event) => inputHandler(event, "+7(999)999-99-99")}
                        onBlur={(event) => inputHandler(event, "Номер телефона")}
-                       placeholder={state[3].inputPlaceholderValue}
+                       placeholder={state.find((item) => item.inputId === "phoneInputField").inputPlaceholderValue}
                        required
-                       value={state[3].inputValue}
+                       value={state.find((item) => item.inputId === "phoneInputField").inputValue}
                        onChange={inputHandler}
                 />
 
-                <span className={styles["input-verification-result-block"]}>
-                    <img className={styles["icon-done"]} src={doneIcon} alt="Done"/>
-                </span>
+                {
+                    state.find((item) => item.inputId === "phoneInputField").inputVerificationResult
+                        ?
+                        <span className={styles["input-verification-result-block"]}>
+                            <img className={styles["icon-done"]} src={doneIcon} alt="Done"/>
+                        </span>
+                        : null
+                }
             </div>
 
-            <button className={styles["btn-submit-disabled"]} type="submit"
-                    disabled>Зарегистрироваться
+            <button className={
+                state.every(item => item.inputVerificationResult === true)
+                    ? styles["btn-submit"]
+                    : styles["btn-submit-disabled"]}
+
+                    type="submit"
+
+                    disabled={state.every(item => item.inputVerificationResult === false)}
+            >
+                Зарегистрироваться
             </button>
 
             <span className={styles.text}>Нажимая на кнопку, вы принимаете&nbsp;

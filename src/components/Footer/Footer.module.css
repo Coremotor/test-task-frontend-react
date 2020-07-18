@@ -8,7 +8,7 @@
     margin-right: auto;
 }
 
-.dayMode {
+.day-mode {
     width: 14px;
     height: 14px;
     background-image: url("../../img/moon.svg");
@@ -17,11 +17,11 @@
     margin-right: 22px;
 }
 
-.languageChange {
+.language-change {
     color: #111111;
     transition: .5s;
 }
 
-.languageChange:hover {
+.language-change:hover {
     color: #3D7FFF;
 }

@@ -50,7 +50,6 @@ export default function App() {
                 return inputField;
             }
         });
-        console.log('newState', newState)
         setState(newState);
     }
 
