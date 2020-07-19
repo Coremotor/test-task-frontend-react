@@ -130,7 +130,7 @@ export default function Form({inputHandler, state}) {
 
                     type="submit"
 
-                    disabled={state.every(item => item.inputVerificationResult === false)}
+                    disabled={!state.every(item => item.inputVerificationResult === true)}
             >
                 Зарегистрироваться
             </button>
